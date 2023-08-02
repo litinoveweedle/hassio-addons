@@ -1,9 +1,10 @@
 ---
 name: ntopng
-version: dev
+version: 0.0.1
 slug: ntopng
 description: The SoHo FOSS & FREE ntopng with netflow collector
-url: https://github.com/litinoveweedle/addon-ntopng
+url: https://github.com/litinoveweedle/hassio-addons
+image: ghcr.io/litinoveweedle/{arch}-ntopng
 ingress: true
 ingress_port: 3000
 ingress_stream: true
