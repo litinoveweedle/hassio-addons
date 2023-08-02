@@ -8,8 +8,6 @@ ingress: true
 ingress_port: 3000
 ingress_stream: true
 panel_icon: mdi:help-network-outline
-panel_admin: true
-startup: application
 homeassistant: 2023.7.2
 hassio_api: true
 arch:
@@ -20,7 +18,7 @@ arch:
 init: false
 services:
   - mysql:want
-  - influxdb:want
+  #- influxdb:want
 map:
   - share:rw
   - ssl
