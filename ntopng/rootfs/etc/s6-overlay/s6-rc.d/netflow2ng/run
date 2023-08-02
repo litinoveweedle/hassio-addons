@@ -22,7 +22,6 @@ if bashio::var.is_empty "${netflow_port}"; then
 else
     options+=(--listen="0.0.0.0:${netflow_port}")
 fi
-[error|warn|info|debug|trace]
 
 # Find the matching netflow log level
 if bashio::config.has_value 'log_level'; then

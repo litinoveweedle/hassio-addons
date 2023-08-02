@@ -1,13 +1,14 @@
 ---
 name: ntopng
-version: dev
+version: "0.0.2"
 slug: ntopng
 description: The SoHo FOSS & FREE ntopng with netflow collector
-url: https://github.com/litinoveweedle/addon-ntopng
+url: "https://github.com/litinoveweedle/hassio-addons/tree/main/ntopng"
+image: "ghcr.io/litinoveweedle/{arch}-ntopng"
 ingress: true
 ingress_port: 3000
 ingress_stream: true
-panel_icon: mdi:help-network-outline
+panel_icon: "mdi:help-network-outline"
 homeassistant: 2023.7.2
 hassio_api: true
 arch:
@@ -33,6 +34,7 @@ discovery:
 auth_api: true
 host_network: true
 options:
+  log_level: info
   ssl: true
   certfile: fullchain.pem
   keyfile: privkey.pem
@@ -40,7 +42,7 @@ options:
   ntop_auth: false
   local_net:
     - 192.168.1.0/24
-  mysql_uri: 
+  mysql_uri: ""
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
   ssl: bool
