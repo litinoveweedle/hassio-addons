@@ -1,0 +1,49 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: ntopng
+# Runs the netflow2ng daemon
+# ==============================================================================
+declate -a options
+declare netflow_port
+
+bashio::log.info "Starting netflow2ng..."
+
+options+=(--metrics="127.0.0.1:8080")
+options+=(--listen-zmq="127.0.0.1:5556")
+options+=(--log-level="error")
+
+netflow_port=$(bashio::addon.port '2055/udp')
+if bashio::var.is_empty "${netflow_port}"; then
+    bashio::log.warning
+    bashio::log.warning "Netflow collector port is not defined"
+    bashio::log.warning "Netflow will start only on localhost!"
+    bashio::log.warning
+    options+=(--listen="127.0.0.2055")
+else
+    options+=(--listen="0.0.0.0:${netflow_port}")
+fi
+[error|warn|info|debug|trace]
+
+# Find the matching netflow log level
+if bashio::config.has_value 'log_level'; then
+    case "$(bashio::string.lower "$(bashio::config 'log_level')")" in
+        all|trace)
+            options+=(--log-level="trace")
+            ;;
+        debug)
+            options+=(--log-level="debug")
+            ;;
+        info|notice)
+            options+=(--log-level="info")
+            ;;
+        warning)
+            options+=(--log-level="warn")
+            ;;
+        error|fatal|off)
+            options+=(--log-level="error")
+            ;;
+    esac
+fi
+
+exec s6-setuidgid netflow netflow2ng "${options[@]}"
+

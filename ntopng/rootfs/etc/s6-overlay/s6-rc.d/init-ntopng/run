@@ -1,0 +1,26 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# shellcheck disable=SC2207
+# ==============================================================================
+# Home Assistant Community Add-on: AdGuard Home
+# Handles configuration
+# ==============================================================================
+readonly DATA="/data/ntopng"
+
+if ! bashio::fs.directory_exists ${DATA}; then
+    mkdir -p ${DATA}
+    chmod 777 ${DATA}
+    mkdir -p ${DATA}/rrd
+    chown -R ntopng:ntopng ${DATA}/rrd
+    mkdir -p ${DATA}/pcap
+    chown -R ntopng:ntopng ${DATA}/pcap
+else
+    if ! bashio::fs.directory_exists ${DATA}/rrd; then
+        mkdir -p ${DATA}/rrd
+        chown -R ntopng:ntopng ${DATA}/rrd
+    fi
+    if ! bashio::fs.directory_exists ${DATA}/pcap; then
+        mkdir -p ${DATA}/pcap
+        chown -R ntopng:ntopng ${DATA}/pcap
+    fi
+fi
