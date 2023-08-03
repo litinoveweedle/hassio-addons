@@ -1,0 +1,26 @@
+---
+configuration:
+  log_level:
+    name: log level
+    description: The amount of logging the add-on should do. [trace|debug|info|notice|warning|error|fatal]
+  ssl:
+    name: ssl
+    description: Use SSL (not needed for ingress)
+  certfile:
+    name: certfile
+    description: Certificate file (not needed for ingress) 
+  keyfile:
+    name: keyfile
+    description: Private key file (not needed for ingress)
+  leave_front_door_open:
+    name: leave front door open
+    description: Disable HA authentication when not using ingress. Permit to access addon without authorization!
+  ntop_auth:
+    name: ntop auth
+    description: If using ingress authentication you can disable ntop internal authentication
+  local_net:
+    name: local networks
+    description: list of subnets which are considered local network
+  mysql_uri:
+    name: mysql URI
+    description: Expired flows will be stored in the MySQL/MariaDB database
