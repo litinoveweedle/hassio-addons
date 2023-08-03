@@ -7,6 +7,11 @@
 # ==============================================================================
 readonly DATA="/data/ntopng"
 
+if ! bashio::fs.directory_exists /var/log/redis; then
+    mkdir -p /var/log/redis
+    chown -R redis:redis /var/log/redis
+fi
+
 if ! bashio::fs.directory_exists ${DATA}; then
     mkdir -p ${DATA}
     chmod 777 ${DATA}

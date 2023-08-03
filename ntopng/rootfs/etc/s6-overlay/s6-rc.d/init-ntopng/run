@@ -2,7 +2,7 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2207
 # ==============================================================================
-# Home Assistant Community Add-on: AdGuard Home
+# Home Assistant Community Add-on: ntopng
 # Handles configuration
 # ==============================================================================
 readonly DATA="/data/ntopng"

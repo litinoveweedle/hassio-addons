@@ -6,6 +6,12 @@
 # ==============================================================================
 declare ntop_port=3000
 
+if ! bashio::fs.directory_exists /var/log/nginx; then
+    mkdir -p /var/log/nginx
+    #chown -R www-data:www-data /var/log/nginx
+    touch /var/log/nginx/error.log
+fi
+
 # Generate Ingress configuration
 bashio::var.json \
     interface "$(bashio::addon.ip_address)" \

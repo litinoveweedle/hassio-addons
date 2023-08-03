@@ -3,7 +3,7 @@
 # Home Assistant Community Add-on: ntopng
 # Runs the netflow2ng daemon
 # ==============================================================================
-declate -a options
+declare -a options
 declare netflow_port
 
 bashio::log.info "Starting netflow2ng..."

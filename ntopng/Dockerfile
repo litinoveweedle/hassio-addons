@@ -113,15 +113,7 @@ RUN cd /tmp \
     && cp ./netflow2ng/dist/netflow2ng-* /usr/local/bin/netflow2ng \
     && chmod +x /usr/local/bin/netflow2ng \
     && useradd -r -m -d /var/run/netflow -s /bin/false netflow \
-    && useradd -r -m -d /var/run/ntop -s /bin/false ntopng \
-#    && mv /etc/redis /usr/local/etc/ \
-#    && chown -R root:redis /usr/local/etc/redis \
-#    && chmod 770 /usr/local/etc/redis \
-#    && chmod 640 /usr/local/etc/redis/redis.conf \
-    && mkdir -p /var/log/redis \
-    && chown -R redis:redis /var/log/redis \
-    && mkdir -p /var/log/nginx \
-    && touch /var/log/nginx/error.log
+    && useradd -r -m -d /var/run/ntop -s /bin/false ntopng
 
 # Cleanup
 RUN apt-get remove -y --purge \
