@@ -9,7 +9,7 @@ declare netflow_port
 bashio::log.info "Starting netflow2ng..."
 
 options+=(--metrics="127.0.0.1:8080")
-options+=(--listen-zmq="127.0.0.1:5556")
+options+=(--listen-zmq="tcp://127.0.0.1:5556")
 options+=(--log-level="error")
 
 netflow_port=$(bashio::addon.port '2055/udp')
@@ -44,7 +44,7 @@ if bashio::config.has_value 'log_level'; then
     esac
 fi
 
-bashio::log.info "${options[@]}"
+bashio::log.info "netflow2ng ${options[@]}"
 
 exec s6-setuidgid netflow netflow2ng "${options[@]}"
 

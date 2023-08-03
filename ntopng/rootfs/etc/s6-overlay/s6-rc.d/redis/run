@@ -33,7 +33,7 @@ if bashio::config.has_value 'log_level'; then
     esac
 fi
 
-bashio::log.info "${options[@]}"
+bashio::log.info "redis-server /etc/redis/redis.conf ${options[@]}"
 
 exec s6-setuidgid redis redis-server /etc/redis/redis.conf "${options[@]}"
 
