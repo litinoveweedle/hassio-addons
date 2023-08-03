@@ -4,6 +4,6 @@ build_from:
   amd64: ghcr.io/hassio-addons/debian-base/amd64:7.1.0
   armv7: ghcr.io/hassio-addons/debian-base/armv7:7.1.0
   i386: ghcr.io/hassio-addons/debian-base/i386:7.1.0
-arg:
+args:
   BUILD_REPO: litinoveweedle/ntopng
   BUILD_DESCRIPTION: "hassio ntop addon"
