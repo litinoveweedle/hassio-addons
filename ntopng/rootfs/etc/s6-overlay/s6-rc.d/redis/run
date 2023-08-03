@@ -7,12 +7,10 @@ declare -a options
 
 bashio::log.info "Starting redis..."
 
-
 options+=(--bind 127.0.0.1)
 options+=(--port 6379)
 options+=(--daemonize no)
 options+=(--dir /data/ntopng/redis)
-
 
 # Find the matching ntopng log level
 if bashio::config.has_value 'log_level'; then
@@ -35,6 +33,7 @@ if bashio::config.has_value 'log_level'; then
     esac
 fi
 
+bashio::log.info "${options[@]}"
 
 exec s6-setuidgid redis redis-server /etc/redis/redis.conf "${options[@]}"
 

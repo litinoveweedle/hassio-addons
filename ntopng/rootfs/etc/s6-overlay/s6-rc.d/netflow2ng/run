@@ -44,5 +44,7 @@ if bashio::config.has_value 'log_level'; then
     esac
 fi
 
+bashio::log.info "${options[@]}"
+
 exec s6-setuidgid netflow netflow2ng "${options[@]}"
 
