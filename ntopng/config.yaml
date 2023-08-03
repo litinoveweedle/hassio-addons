@@ -29,8 +29,6 @@ ports:
 ports_description:
   80/tcp: ntopng web interface (Not required for Ingress)
   2055/udp: NetFlow2NG NetFlow v9 collector
-discovery:
-  - ntopng
 auth_api: true
 host_network: true
 options:
