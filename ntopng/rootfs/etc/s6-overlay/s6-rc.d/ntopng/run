@@ -44,10 +44,10 @@ if bashio::config.false 'ntop_auth'; then
     if bashio::config.true 'leave_front_door_open' && bashio::var.has_value "$(bashio::addon.port 80)"; then
         bashio::log.warning
         bashio::log.warning "Direct access mode is enabled"
-        bashio::log.warning "and both HA access authentication
+        bashio::log.warning "and both HA access authentication"
         bashio::log.warning "and ntop application is disabled!"
         bashio::log.warning
-        bashio::log.warning "Anyone will have access!"
+        bashio::log.warning "Anyone will have access to ntop!"
         bashio::log.warning
     fi
     options+=(--disable-login)
