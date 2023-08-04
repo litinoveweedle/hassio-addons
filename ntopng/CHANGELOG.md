@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.9
+
+- added ntop flow export
+
 ## 0.0.8
 
 - fixed ntop init
