@@ -88,3 +88,4 @@ bashio::log.info "ntopng ${options[@]}"
 
 # Run ntopng
 exec s6-setuidgid ntopng ntopng "${options[@]}"
+
