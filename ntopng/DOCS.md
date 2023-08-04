@@ -37,7 +37,7 @@ ntop_auth: false
 local_net:
   - 192.168.1.0/24
   - 192.168.30.0/22
-mysql_uri: mysql;127.0.0.1;ntopng;user;secret_password
+export_flows: mysql;127.0.0.1;ntopng;user;secret_password
 ```
 
 ### Option: `log_level`
@@ -70,7 +70,7 @@ you are troubleshooting.
 
 ### Option: `loacl_net`
 
-### Option: `mysql_uri`
+### Option: `export_flows`
 
 
 ## Changelog & Releases

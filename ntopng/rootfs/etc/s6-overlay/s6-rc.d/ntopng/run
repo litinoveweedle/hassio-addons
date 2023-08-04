@@ -53,8 +53,8 @@ if bashio::config.false 'ntop_auth'; then
     options+=(--disable-login)
 fi
 
-if $(bashio::config.has_value 'mysql_uri') ; then
-    options+=(--dump-flows=mysql;"$(bashio::config 'mysql_uri')")
+if $(bashio::config.has_value 'export_flows') ; then
+    options+=(--dump-flows="$(bashio::config 'export_flows')")
 fi
 
 # Find the matching ntopng log level
