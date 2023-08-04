@@ -1,5 +1,19 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.8
+
+- fixed ntop init
+
+## 0.0.7
+
+- fixed init
+
+## 0.0.6
+
+## 0.0.5
+
+## 0.0.4
+
 ## 0.0.3
 
 - Added icon and logo
