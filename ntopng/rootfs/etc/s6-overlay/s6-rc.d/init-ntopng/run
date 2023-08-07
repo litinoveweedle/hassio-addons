@@ -7,6 +7,11 @@
 # ==============================================================================
 readonly DATA="/data/ntopng"
 
+if ! bashio::fs.directory_exists /var/run/ntopng; then
+    mkdir -p /var/run/ntopng
+    chown -R ntopng:ntopng /var/run/ntopng
+fi
+
 if ! bashio::fs.directory_exists ${DATA}; then
     mkdir -p ${DATA}
     chmod 777 ${DATA}
@@ -24,3 +29,4 @@ else
         chown -R ntopng:ntopng ${DATA}/pcap
     fi
 fi
+
