@@ -2,22 +2,16 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2207
 # ==============================================================================
-# Home Assistant Community Add-on: ntopng
+# Li Tin O've Weedle Add-on: ntopng
 # Handles configuration
 # ==============================================================================
-readonly DATA="/data/ntopng"
 
 if ! bashio::fs.directory_exists /var/log/redis; then
     mkdir -p /var/log/redis
     chown -R redis:redis /var/log/redis
 fi
 
-if ! bashio::fs.directory_exists ${DATA}; then
-    mkdir -p ${DATA}
-    chmod 777 ${DATA}
-    mkdir -p ${DATA}/redis
-    chown -R ntopng:ntopng ${DATA}/redis
-elif ! bashio::fs.directory_exists ${DATA}/redis; then
-    mkdir -p ${DATA}/redis
-    chown -R redis:redis ${DATA}/redis
+elif ! bashio::fs.directory_exists /data/redis; then
+    mkdir -p /data/redis
+    chown -R redis:redis /data/redis
 fi

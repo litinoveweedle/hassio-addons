@@ -18,9 +18,19 @@ configuration:
   ntop_auth:
     name: ntop auth
     description: If using ingress authentication you can disable ntop internal authentication
+  custom_scripts:
+    name: ntop custom scripts
+    description: Make ntop scripts accesible and writable in data/scripts directory
   local_net:
     name: local networks
     description: list of subnets which are considered local network
   export_flows:
     name: export flows
     description: Expired flows will be stored in the given system (MySQL/MariaDB, ELK)
+  geoip_account_id:
+    name: geoip account id
+    description: MaxMind GeoIp database account id (https://www.maxmind.com/en/accounts/current/license-key)
+  geoip_license_key: 
+    name: geoip license key
+    description: MaxMind GeoIp database license key (https://www.maxmind.com/en/accounts/current/license-key)
+  

@@ -2,31 +2,30 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2207
 # ==============================================================================
-# Home Assistant Community Add-on: ntopng
+# Li Tin O've Weedle Add-on: ntopng
 # Handles configuration
 # ==============================================================================
-readonly DATA="/data/ntopng"
 
 if ! bashio::fs.directory_exists /var/run/ntopng; then
     mkdir -p /var/run/ntopng
     chown -R ntopng:ntopng /var/run/ntopng
 fi
 
-if ! bashio::fs.directory_exists ${DATA}; then
-    mkdir -p ${DATA}
-    chmod 777 ${DATA}
-    mkdir -p ${DATA}/rrd
-    chown -R ntopng:ntopng ${DATA}/rrd
-    mkdir -p ${DATA}/pcap
-    chown -R ntopng:ntopng ${DATA}/pcap
-else
-    if ! bashio::fs.directory_exists ${DATA}/rrd; then
-        mkdir -p ${DATA}/rrd
-        chown -R ntopng:ntopng ${DATA}/rrd
-    fi
-    if ! bashio::fs.directory_exists ${DATA}/pcap; then
-        mkdir -p ${DATA}/pcap
-        chown -R ntopng:ntopng ${DATA}/pcap
+if ! bashio::fs.directory_exists /data/rrd; then
+    mkdir -p /data/rrd
+    chown -R ntopng:ntopng /data/rrd
+fi
+
+if ! bashio::fs.directory_exists /data/pcap; then
+    mkdir -p /data/pcap
+    chown -R ntopng:ntopng /data/pcap
+fi
+
+if bashio::config.true 'custom_scripts'; then
+    if ! bashio::fs.directory_exists /data/scripts; then
+        mkdir -p /data/scripts
+        cp -R /usr/local/share/ntopng/scripts /data/scripts
+        chown -R ntopng:ntopng /data/scripts
     fi
 fi
 

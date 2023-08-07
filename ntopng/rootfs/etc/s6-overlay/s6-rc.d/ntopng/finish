@@ -1,7 +1,7 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Community Add-on: ntopng
+# Li Tin O've Weedle Add-on: ntopng
 # Take down the S6 supervision tree when ntopng fails
 # ==============================================================================
 declare exit_code

@@ -1,5 +1,13 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.11
+
+- added experimental MaxMInd GeoIp support
+
+## 0.0.10
+
+- change to generic export flow switch
+
 ## 0.0.9
 
 - added ntop flow export

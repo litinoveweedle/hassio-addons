@@ -1,7 +1,7 @@
 #!/command/with-contenv bashio
 # shellcheck disable=SC2191
 # ==============================================================================
-# Home Assistant Community Add-on: ntopng
+# Li Tin O've Weedle Add-on: ntopng
 # Runs the ntopNG
 # ==============================================================================
 declare -a options
@@ -34,11 +34,15 @@ fi
 bashio::log.info 'Starting ntopng...'
 
 options+=(--interface="zmq://127.0.0.1:5556")
-options+=(--data-dir=/data/ntopng/rrd)
-options+=(--pcap-dir=/data/ntopng/pcap)
-options+=(--pid=/var/run/ntopng)
+options+=(--data-dir=/data/rrd)
+options+=(--pcap-dir=/data/pcap)
+options+=(--pid=/var/run/ntopng/ntopng.pid)
 options+=(--http-port="127.0.0.1:3000")
 options+=(--https-port=0)
+
+if bashio::config.true 'custom_scripts'; then
+    options+=(--scripts-dir=/data/scripts)
+fi
 
 if bashio::config.false 'ntop_auth'; then
     if bashio::config.true 'leave_front_door_open' && bashio::var.has_value "$(bashio::addon.port 80)"; then

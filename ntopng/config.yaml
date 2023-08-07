@@ -1,6 +1,6 @@
 ---
 name: ntopng
-version: "0.0.10"
+version: "0.0.11"
 slug: ntopng
 description: The SoHo FOSS & FREE ntopng with netflow collector
 url: "https://github.com/litinoveweedle/hassio-addons/tree/main/ntopng"
@@ -8,7 +8,6 @@ image: "ghcr.io/litinoveweedle/{arch}-ntopng"
 ingress: true
 ingress_port: 0
 ingress_stream: true
-panel_admin: true
 panel_icon: "mdi:help-network-outline"
 homeassistant: 2023.7.2
 hassio_api: true
@@ -39,9 +38,12 @@ options:
   keyfile: privkey.pem
   leave_front_door_open: false
   ntop_auth: false
+  custom_scripts: false
   local_net:
     - 192.168.1.0/24
   export_flows: ""
+  geoip_account_id: ""
+  geoip_license_key: ""
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
   ssl: bool
@@ -49,7 +51,10 @@ schema:
   keyfile: str
   leave_front_door_open: bool
   ntop_auth: bool
+  custom_scripts: bool
   local_net:
     - match(^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}(\=[A-Z0-9_]+)?$)
   export_flows: str
+  geoip_account_id: str
+  geoip_license_key: str
 

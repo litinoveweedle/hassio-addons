@@ -1,4 +1,4 @@
-# Li Tin O`ve Weedle Assistant Community Add-on: ntopng
+# Li Tin O`ve Weedle Assistant Add-on: ntopng
 
 This is an ntopng add-on for Home Assistant.
 It includes opensource community version of ntopng 
@@ -68,9 +68,15 @@ you are troubleshooting.
 
 ### Option: `ntop_auth`
 
+### Option: `custom_scripts`
+
 ### Option: `loacl_net`
 
 ### Option: `export_flows`
+
+### Option: `geoip_account_id`
+
+### Option: `geoip_license_key`
 
 
 ## Changelog & Releases
