@@ -34,10 +34,13 @@ certfile: certfile.pem
 keyfile: keyfile.pem
 leave_front_door_open: false
 ntop_auth: false
+custom_scripts: false
 local_net:
   - 192.168.1.0/24
   - 192.168.30.0/22
 export_flows: mysql;127.0.0.1;ntopng;user;secret_password
+geoip_account_id: 123456
+geoip_license_key: "Kdsalhdsl_lshahc_hskljd_as"
 ```
 
 ### Option: `log_level`

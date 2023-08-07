@@ -4,9 +4,12 @@
 # Runs the netflow2ng daemon
 # ==============================================================================
 
-while 1
+bashio::log.info "Starting Maxmind Database update runner..."
+
+while `true`
 do
     sleep 21600
     bashio::log.info "Updating Maxmind Database..."
     /usr/bin/geoipupdate
+    bashio::log.info "Maxmind Database updated."
 done

@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.13
+
+- fixed GeoIp update
+
 ## 0.0.12
 
 - fixed redis startup
