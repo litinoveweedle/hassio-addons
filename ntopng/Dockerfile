@@ -15,6 +15,7 @@ ARG NETFLOW2NG_VERSION="v0.0.4"
 RUN sed -i -e's/ main/ main contrib/g' /etc/apt/sources.list.d/debian.sources \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
+    vim \
     build-essential \
     git \
     bison \
