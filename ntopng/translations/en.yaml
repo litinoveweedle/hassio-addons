@@ -21,6 +21,9 @@ configuration:
   custom_scripts:
     name: ntop custom scripts
     description: Make ntop scripts accesible and writable in data/scripts directory
+  dns_mode:
+    name: ntop dns mode
+    description: DNS addresses resolution mode 
   local_net:
     name: local networks
     description: list of subnets which are considered local network

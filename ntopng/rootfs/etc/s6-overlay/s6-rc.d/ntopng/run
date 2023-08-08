@@ -68,6 +68,10 @@ if bashio::config.false 'ntop_auth'; then
     options+=(--disable-login)
 fi
 
+if $(bashio::config.has_value 'dns_mode') ; then
+    options+=(--dns-mode="$(bashio::config 'dns_mode')")
+fi
+
 if $(bashio::config.has_value 'export_flows') ; then
     options+=(--dump-flows="$(bashio::config 'export_flows')")
 fi

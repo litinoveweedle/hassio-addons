@@ -1,6 +1,6 @@
 ---
 name: ntopng
-version: "0.0.15"
+version: "0.0.16"
 slug: ntopng
 description: The SoHo FOSS & FREE ntopng with netflow collector
 url: "https://github.com/litinoveweedle/hassio-addons/tree/main/ntopng"
@@ -38,6 +38,7 @@ options:
   leave_front_door_open: false
   ntop_auth: false
   custom_scripts: false
+  dns_mode: 0
   local_net:
     - 192.168.1.0/24
   export_flows: ""
@@ -51,6 +52,7 @@ schema:
   leave_front_door_open: bool
   ntop_auth: bool
   custom_scripts: bool
+  dns_mode: match(^[0-4]$)
   local_net:
     - match(^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}(\=[A-Z0-9_]+)?$)
   export_flows: str

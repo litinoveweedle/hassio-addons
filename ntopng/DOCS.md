@@ -35,6 +35,7 @@ keyfile: keyfile.pem
 leave_front_door_open: false
 ntop_auth: false
 custom_scripts: false
+dns_mode: 1
 local_net:
   - 192.168.1.0/24
   - 192.168.30.0/22
@@ -72,6 +73,8 @@ you are troubleshooting.
 ### Option: `ntop_auth`
 
 ### Option: `custom_scripts`
+
+### Option: `dns_mode`
 
 ### Option: `loacl_net`
 

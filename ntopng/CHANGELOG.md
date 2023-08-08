@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.16
+
+- added ntop dms mode config option
+
 ## 0.0.15
 
 - fixed GeoIP init
