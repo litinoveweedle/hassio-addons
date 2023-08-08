@@ -156,6 +156,7 @@ RUN apt-get remove -y --purge \
     && rm -fr \
         /tmp/* \
         /etc/nginx \
+        /etc/GeoIP.conf \
         /var/{cache,log}/* \
         /var/lib/apt/lists/*
 

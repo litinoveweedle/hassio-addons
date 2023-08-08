@@ -10,9 +10,13 @@ if bashio::config.has_value 'geoip_account_id'; then
     if bashio::config.has_value 'geoip_license_key'; then
     	bashio::log.info "Found a Maxmind account id and license key pair, ntopng will support GeoIP lookups if valid."
         echo -e "AccountID $(bashio::config 'geoip_account_id')\nLicenseKey $(bashio::config 'geoip_license_key')\nEditionIDs GeoLite2-ASN GeoLite2-City GeoLite2-Country" > /etc/GeoIP.conf
+        if ! bashio::fs.directory_exists /var/lib/GeoIP; then
+            mkdir -p /var/lib/GeoIP
+        fi
         bashio::log.info "Updating Maxmind Database..."
         /usr/bin/geoipupdate
         bashio::log.info "Maxmind Database updated."
+        touch /var/lib/GeoIP/.finished
     else
         bashio::log.warn "No Maxmind GeoIP license key was found, ntop will not support GeoIP lookups. Please get a license from maxmind.com and put it into configuration."
     fi

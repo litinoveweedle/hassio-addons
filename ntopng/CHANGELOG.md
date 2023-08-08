@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.14
+
+- fixed ntop dependency on GeoIP update
+
 ## 0.0.13
 
 - fixed GeoIp update
