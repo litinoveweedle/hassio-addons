@@ -1,16 +1,15 @@
 ---
 name: ntopng
-version: "0.0.16"
+version: "0.0.17"
 slug: ntopng
 description: The SoHo FOSS & FREE ntopng with netflow collector
 url: "https://github.com/litinoveweedle/hassio-addons/tree/main/ntopng"
 image: "ghcr.io/litinoveweedle/{arch}-ntopng"
 ingress: true
 ingress_port: 0
-#ingress_stream: true
+ingress_stream: true
 panel_icon: "mdi:help-network-outline"
 homeassistant: 2023.7.2
-#hassio_api: true
 arch:
   - aarch64
   - amd64
