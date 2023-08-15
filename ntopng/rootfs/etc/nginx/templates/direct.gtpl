@@ -45,6 +45,6 @@ server {
         # enable substitution in all sources
         sub_filter_types text/css text/xml application/javascript;
         # update prefix path
-        sub_filter 'ntopng_prefix' '';
+        sub_filter '/ntopng_prefix' '';
     }
 }

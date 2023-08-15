@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.19
+
+- grrrrrr... the paths
+
 ## 0.0.18
 
 - another try to fix ntop ingress paths

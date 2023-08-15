@@ -50,7 +50,7 @@ options+=(--pcap-dir=/data/pcap)
 options+=(--pid=/var/run/ntopng/ntopng.pid)
 options+=(--http-port="127.0.0.1:3000")
 options+=(--https-port=0)
-options+=(--http-prefix="ntopng_prefix")
+options+=(--http-prefix="/ntopng_prefix")
 
 if bashio::config.true 'custom_scripts'; then
     options+=(--scripts-dir=/data/scripts)
