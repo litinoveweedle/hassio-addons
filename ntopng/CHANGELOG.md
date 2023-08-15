@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.18
+
+- another try to fix ntop ingress paths
+
 ## 0.0.17
 
 - fixed ntop ingress paths and iframe block
