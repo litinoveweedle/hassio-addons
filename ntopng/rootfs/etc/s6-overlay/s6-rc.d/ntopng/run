@@ -69,12 +69,20 @@ if bashio::config.false 'ntop_auth'; then
     options+=(--disable-login)
 fi
 
-if $(bashio::config.has_value 'dns_mode') ; then
+if $(bashio::config.has_value 'dns_mode'); then
     options+=(--dns-mode="$(bashio::config 'dns_mode')")
 fi
 
-if $(bashio::config.has_value 'export_flows') ; then
+if $(bashio::config.has_value 'export_flows'); then
     options+=(--dump-flows="$(bashio::config 'export_flows')")
+fi
+
+if $(bashio::config.has_value 'local_net'); then
+    nets=""
+    for net in $(bashio::config 'local_net'); do
+        nets+=$net","
+    done
+    options+=(--local-networks="${nets%,}")
 fi
 
 # Find the matching ntopng log level

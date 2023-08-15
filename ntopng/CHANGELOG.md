@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.21
+
+- added local network configuration logic
+
 ## 0.0.20
 
 - ntop ingress paths fixed?
