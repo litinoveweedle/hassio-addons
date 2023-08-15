@@ -19,10 +19,11 @@ server {
         
         #enable ntop in iframe
         proxy_hide_header X-Frame-Options;
-        
+
         # enable substitution in all sources
-        sub_filter_types text/css text/xml application/javascript;
+        sub_filter_types *;
         # update prefix path
-        sub_filter '/ntopng_prefix' '';
+        sub_filter "/ntopng_prefix" "$http_x_ingress_path";
+        sub_filter_once off;
     }
 }

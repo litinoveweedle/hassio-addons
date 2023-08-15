@@ -41,10 +41,11 @@ server {
         {{ end }}
 
         proxy_pass http://backend;
-        
+
         # enable substitution in all sources
-        sub_filter_types text/css text/xml application/javascript;
+        sub_filter_types *;
         # update prefix path
-        sub_filter '/ntopng_prefix' '';
+        sub_filter "/ntopng_prefix" "";
+        sub_filter_once off;
     }
 }
