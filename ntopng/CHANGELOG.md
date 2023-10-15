@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.24
+
+- fixed bashio logs for GeoIP
+
 ## 0.0.23
 
 - fixed optional config values schema

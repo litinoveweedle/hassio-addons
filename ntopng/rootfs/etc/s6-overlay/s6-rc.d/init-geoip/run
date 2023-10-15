@@ -18,8 +18,8 @@ if bashio::config.has_value 'geoip_account_id'; then
         bashio::log.info "Maxmind Database updated."
         touch /var/lib/GeoIP/.finished
     else
-        bashio::log.warn "No Maxmind GeoIP license key was found, ntop will not support GeoIP lookups. Please get a license from maxmind.com and put it into configuration."
+        bashio::log.warning "No Maxmind GeoIP license key was found, ntop will not support GeoIP lookups. Please get a license from maxmind.com and put it into configuration."
     fi
 else
-    bashio::log.warn "No Maxmind GeoIP account id was found, ntop will not support GeoIP lookups. Please get a license from maxmind.com and put it into configuration."
+    bashio::log.warning "No Maxmind GeoIP account id was found, ntop will not support GeoIP lookups. Please get a license from maxmind.com and put it into configuration."
 fi
