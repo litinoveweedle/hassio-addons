@@ -1,6 +1,6 @@
 ---
 name: ntopng
-version: "0.0.22"
+version: "0.0.23"
 slug: ntopng
 description: The SoHo FOSS & FREE ntopng with netflow collector
 url: "https://github.com/litinoveweedle/hassio-addons/tree/main/ntopng"
@@ -40,9 +40,6 @@ options:
   dns_mode: 0
   local_net:
     - 192.168.1.0/24
-  export_flows: null
-  geoip_account_id: null
-  geoip_license_key: null
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
   ssl: bool
