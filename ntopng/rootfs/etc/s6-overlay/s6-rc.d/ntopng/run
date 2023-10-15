@@ -66,7 +66,8 @@ if bashio::config.false 'ntop_auth'; then
         bashio::log.warning "Anyone will have access to ntop!"
         bashio::log.warning
     fi
-    options+=(--disable-login)
+    options+=(--disable-login=1)
+#    options+=(--disable-autologout)
 fi
 
 if $(bashio::config.has_value 'dns_mode'); then

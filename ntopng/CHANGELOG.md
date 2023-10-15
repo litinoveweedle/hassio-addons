@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.22
+
+- configuration fix making MaxMind GeoIP license optional
+
 ## 0.0.21
 
 - added local network configuration logic
