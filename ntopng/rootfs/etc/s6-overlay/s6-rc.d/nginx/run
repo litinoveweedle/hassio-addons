@@ -5,7 +5,7 @@
 # ==============================================================================
 
 # Wait for ntopng to become available
-bashio::net.wait_for 3000 localhost 900
+bashio::net.wait_for "$(bashio::config 'ntopng_loc_port')" localhost 900
 
 bashio::log.info "Starting NGinx..."
 exec nginx

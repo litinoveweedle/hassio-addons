@@ -36,4 +36,16 @@ configuration:
   geoip_license_key: 
     name: geoip license key
     description: MaxMind GeoIp database license key (https://www.maxmind.com/en/accounts/current/license-key)
+  zmq_loc_port:
+    name: NetFlow2NG ZMQ localhost port
+    description: Internal localhost only port for communication from ntopng to NetFlow2NG
+  ntopng_loc_port:
+    name: ntopng web interface localhost port
+    description: Internal localhost only port for ntopng user web interface (accessible by ingress)
+  netflow2ng_loc_port:
+    name: NetFlow2NG web interface localhost port
+    description: Internal localhost only port for NetFlow2NG statistic web interface (accessible by ingress)
+  redis_loc_port:
+    name: Redis localhost port
+    description: Internal localhost only port for communication from ntopng to Redis
   

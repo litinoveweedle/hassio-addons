@@ -10,13 +10,13 @@ declare -a options
 s6-svwait -u -t 5000 /run/service//redis
 
 # Wait for Redis to become available
-bashio::net.wait_for 6379 localhost 900
+bashio::net.wait_for "$(bashio::config 'redis_loc_port')" localhost 900
 
 # Wait for Netflow2NG to become available
 s6-svwait -u -t 5000 /run/service//netflow2ng
 
 # Wait for Netflow2NG to become available
-bashio::net.wait_for 5556 localhost 900
+bashio::net.wait_for "$(bashio::config 'zmq_loc_port')" localhost 900
 
 # Wait for Redis...
 bashio::log.info "ntopng is waiting until Redis is available..."
@@ -44,11 +44,11 @@ fi
 
 bashio::log.info 'Starting ntopng...'
 
-options+=(--interface="zmq://127.0.0.1:5556")
+options+=(--interface="zmq://127.0.0.1:$(bashio::config 'zmq_loc_port')")
 options+=(--data-dir=/data/rrd)
 options+=(--pcap-dir=/data/pcap)
 options+=(--pid=/var/run/ntopng/ntopng.pid)
-options+=(--http-port="127.0.0.1:3000")
+options+=(--http-port="127.0.0.1:$(bashio::config 'ntopng_loc_port')")
 options+=(--https-port=0)
 options+=(--http-prefix="/ntopng_prefix")
 

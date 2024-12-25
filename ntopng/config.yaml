@@ -36,6 +36,10 @@ options:
   keyfile: privkey.pem
   leave_front_door_open: false
   ntop_auth: false
+  zmq_loc_port: 5556
+  ntopng_loc_port: 3000
+  netflow2ng_loc_port: 8080
+  redis_loc_port: 6379
   custom_scripts: false
   dns_mode: 0
   local_net:
@@ -47,6 +51,10 @@ schema:
   keyfile: str
   leave_front_door_open: bool
   ntop_auth: bool
+  zmq_loc_port: int(1024,65535)
+  ntopng_loc_port: int(1024,65535)
+  netflow2ng_loc_port: int(1024,65535)
+  redis_loc_port: int(1024,65535)
   custom_scripts: bool
   dns_mode: match(^[0-4]$)
   local_net:

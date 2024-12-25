@@ -8,8 +8,8 @@ declare netflow_port
 
 bashio::log.info "Starting netflow2ng..."
 
-options+=(--metrics="127.0.0.1:8080")
-options+=(--listen-zmq="tcp://127.0.0.1:5556")
+options+=(--metrics="127.0.0.1:$(bashio::config 'netflow2ng_loc_port')")
+options+=(--listen-zmq="tcp://127.0.0.1:$(bashio::config 'zmq_loc_port')")
 options+=(--log-level="error")
 
 netflow_port=$(bashio::addon.port '2055/udp')
@@ -18,9 +18,9 @@ if bashio::var.is_empty "${netflow_port}"; then
     bashio::log.warning "Netflow collector port is not defined"
     bashio::log.warning "Netflow will start only on localhost!"
     bashio::log.warning
-    options+=(--listen="127.0.0.2055")
+    options+=(--listen="127.0.0.1:$(bashio::config 'netflow_loc_port')")
 else
-    options+=(--listen="0.0.0.0:${netflow_port}")
+    options+=(--listen="0.0.0.0:2055")
 fi
 
 # Find the matching netflow log level
