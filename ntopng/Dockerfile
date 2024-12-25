@@ -1,5 +1,6 @@
 # hadolint ignore=DL3006
-FROM ghcr.io/hassio-addons/debian-base/amd64:7.1.0
+ARG BUILD_FROM
+FROM ${BUILD_FROM}
 
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
