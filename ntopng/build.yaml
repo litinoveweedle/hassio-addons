@@ -7,3 +7,6 @@ build_from:
 args:
   BUILD_REPO: litinoveweedle/ntopng
   BUILD_DESCRIPTION: "hassio ntop addon"
+  NDPI_VERSION: "4.6-stable"
+  NTOP_VERSION: "5.6-stable"
+  NETFLOW2NG_VERSION: "v0.0.4"
