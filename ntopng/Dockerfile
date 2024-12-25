@@ -1,5 +1,5 @@
 # hadolint ignore=DL3006
-FROM ghcr.io/hassio-addons/debian-base/amd64:7.1.0
+FROM ghcr.io/hassio-addons/debian-base/amd64:7.6.2
 
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
