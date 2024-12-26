@@ -17,10 +17,12 @@ if bashio::var.is_empty "${netflow_port}"; then
     bashio::log.warning
     bashio::log.warning "Netflow collector port is not defined"
     bashio::log.warning "Netflow will start only on localhost!"
+    bashio::log.warning "This is probably not something you want"
+    bashio::log.warning "as you won't be able to collect data from network!"
     bashio::log.warning
-    options+=(--listen="127.0.0.1:$(bashio::config 'netflow_loc_port')")
+    options+=(--listen="127.0.0.1:2055")
 else
-    options+=(--listen="0.0.0.0:2055")
+    options+=(--listen="0.0.0.0:$(bashio::config 'netflow_loc_port')")
 fi
 
 # Find the matching netflow log level
