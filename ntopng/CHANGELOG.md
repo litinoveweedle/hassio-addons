@@ -1,5 +1,10 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.25
+
+- bumped nDPI to 4.8
+- internal ports could be modified
+
 ## 0.0.24
 
 - fixed bashio logs for GeoIP
