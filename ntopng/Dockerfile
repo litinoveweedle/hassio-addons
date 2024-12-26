@@ -11,6 +11,8 @@ ARG NDPI_VERSION
 ARG NTOP_VERSION
 ARG NETFLOW2NG_VERSION
 
+COPY Makefile /tmp
+
 # Install prerequisities
 RUN sed -i -e's/ main/ main contrib/g' /etc/apt/sources.list.d/debian.sources \
     && apt-get update \
@@ -102,11 +104,9 @@ RUN sed -i -e's/ main/ main contrib/g' /etc/apt/sources.list.d/debian.sources \
     libsnmp40 \
     libsqlite3-0 \
     libxft2 \
-    libzmq5
-    
+    libzmq5 \
 # Build and install all software
-COPY Makefile /tmp
-RUN cd /tmp \
+    && cd /tmp \
     && git clone --depth 1 --branch ${NDPI_VERSION} https://github.com/ntop/nDPI.git nDPI \
     && git clone --depth 1 --branch ${NTOP_VERSION} https://github.com/ntop/ntopng.git ntopng \
     && git clone --depth 1 --branch ${NETFLOW2NG_VERSION} https://github.com/synfinatic/netflow2ng.git netflow2ng \
@@ -114,10 +114,9 @@ RUN cd /tmp \
     && cp ./netflow2ng/dist/netflow2ng-* /usr/local/bin/netflow2ng \
     && chmod +x /usr/local/bin/netflow2ng \
     && useradd -r -m -d /var/run/netflow -s /bin/false netflow \
-    && useradd -r -m -d /var/run/ntop -s /bin/false ntopng
-
+    && useradd -r -m -d /var/run/ntop -s /bin/false ntopng \
 # Cleanup
-RUN apt-get remove -y --purge \
+    && apt-get remove -y --purge \
     build-essential \
     git \
     bison \
