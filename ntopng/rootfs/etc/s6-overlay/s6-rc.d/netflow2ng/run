@@ -22,7 +22,7 @@ if bashio::var.is_empty "${netflow_port}"; then
     bashio::log.warning
     options+=(--listen="127.0.0.1:2055")
 else
-    options+=(--listen="0.0.0.0:$(bashio::config 'netflow_loc_port')")
+    options+=(--listen="0.0.0.0:${netflow_port}")
 fi
 
 # Find the matching netflow log level
