@@ -4,6 +4,8 @@
 
 - bumped nDPI to 4.8
 - internal ports could be modified
+- reduced docker size
+- made localhost (internal) ports configurable to be able to resolve potential conflicts with other addons
 
 ## 0.0.24
 
