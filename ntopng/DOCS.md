@@ -1,7 +1,7 @@
 # Li Tin O`ve Weedle Assistant Add-on: ntopng
 
 This is an ntopng add-on for Home Assistant.
-It includes opensource community version of ntopng 
+It includes opensource community version of ntopng
 and opensource netflow collector implementation netflow2ng
 
 ## Installation
@@ -84,7 +84,6 @@ you are troubleshooting.
 
 ### Option: `geoip_license_key`
 
-
 ## Changelog & Releases
 
 This repository keeps a change log using [GitHub's releases][releases]
@@ -112,7 +111,6 @@ You could also [open an issue here][issue] GitHub.
 ## Authors & contributors
 
 The original setup of this repository is by [Li Tin O`ve Weedle][litin].
-
 
 ## License
 

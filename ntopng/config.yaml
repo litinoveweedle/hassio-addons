@@ -1,10 +1,9 @@
----
 name: ntopng
-version: "0.0.25"
+version: "0.1.0"
 slug: ntopng
 description: The SoHo FOSS & FREE ntopng with netflow collector
 url: "https://github.com/litinoveweedle/hassio-addons/tree/main/ntopng"
-image: "ghcr.io/litinoveweedle/{arch}-ntopng"
+image: "ghcr.io/litinoveweedle/hassio-addon-ntopng-{arch}"
 ingress: true
 ingress_port: 0
 ingress_stream: true
@@ -18,7 +17,7 @@ arch:
 init: false
 services:
   - mysql:want
-  #- influxdb:want
+  # - influxdb:want
 map:
   - ssl
 ports:
@@ -62,4 +61,3 @@ schema:
   export_flows: "str?"
   geoip_account_id: "int?"
   geoip_license_key: "str?"
-
