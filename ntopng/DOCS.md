@@ -4,26 +4,22 @@ This is an ntopng add-on for Home Assistant.
 It includes opensource community version of ntopng
 and opensource netflow collector implementation netflow2ng
 
+
 ## Installation
 
-The installation of this add-on is pretty straightforward and not different in
-comparison to installing any other Home Assistant add-on.
+Install ntopng addon in your Home Assistant
 
 1. Click the Home Assistant My button below to open the add-on on your Home
    Assistant instance.
 
    [![Open this add-on in your Home Assistant instance.][addon-badge]][addon]
 
-1. Click the "Install" button to install the add-on.
-1. Start the "Example" add-on.
-1. Check the logs of the "Example" add-on to see it in action.
+2. Click the "Install" button to install the add-on.
+3. Start the "Example" add-on.
+4. Check the logs of the "Example" add-on to see it in action.
+
 
 ## Configuration
-
-Eventought this add-on is just an example add-on, it does come with some
-configuration options to play around with.
-
-**Note**: _Remember to restart the add-on when the configuration is changed._
 
 ntopng add-on configuration:
 
@@ -97,6 +93,7 @@ based on the following:
 - `MINOR`: Backwards-compatible new features and enhancements.
 - `PATCH`: Backwards-compatible bugfixes and package updates.
 
+
 ## Support
 
 Got questions?
@@ -104,13 +101,15 @@ Got questions?
 You have several options to get them answered:
 
 - The Home Assistant [Community Forum][forum].
-- Join the [Reddit subreddit][reddit] in [/r/homeassistant][reddit]
+- You could also [open an issue here][issue] GitHub.
 
 You could also [open an issue here][issue] GitHub.
+
 
 ## Authors & contributors
 
 The original setup of this repository is by [Li Tin O`ve Weedle][litin].
+
 
 ## License
 
@@ -121,10 +120,7 @@ Copyright (c) 2023 Dominik Strnad
 [addon-badge]: https://my.home-assistant.io/badges/supervisor_addon.svg
 [addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=a0d7b954_example&repository_url=https%3A%2F%2Fgithub.com%2Flitinoveweedle%2Fhassio-addons
 [contributors]: https://github.com/litinoveweedle/hassio-addons/graphs/contributors
-[discord-ha]: https://discord.gg/c5DvZ4e
-[forum]: https://community.home-assistant.io/t/repository-community-hass-io-add-ons/24705?u=litinoveweedle
+[forum]: https://community.home-assistant.io/t/foss-ntopng-with-netflow-collector-hassio-addon/603491
 [litin]: https://github.com/litinoveweedle
-[issue]: https://github.com/litinoveweedle/hassio-addons/issues
-[reddit]: https://reddit.com/r/homeassistant
-[releases]: https://github.com/litinoveweedle/hassio-addons/ntopng/releases
+[issue]: https://github.com/litinoveweedle/hassio-addons-dev/issues
 [semver]: http://semver.org/spec/v2.0.0.html

@@ -1,4 +1,3 @@
----
 configuration:
   log_level:
     name: log level
@@ -8,7 +7,7 @@ configuration:
     description: Use SSL (not needed for ingress)
   certfile:
     name: certfile
-    description: Certificate file (not needed for ingress) 
+    description: Certificate file (not needed for ingress)
   keyfile:
     name: keyfile
     description: Private key file (not needed for ingress)
@@ -23,7 +22,7 @@ configuration:
     description: Make ntop scripts accesible and writable in data/scripts directory
   dns_mode:
     name: ntop dns mode
-    description: DNS addresses resolution mode 
+    description: DNS addresses resolution mode
   local_net:
     name: local networks
     description: list of subnets which are considered local network
@@ -33,7 +32,7 @@ configuration:
   geoip_account_id:
     name: geoip account id
     description: MaxMind GeoIp database account id (https://www.maxmind.com/en/accounts/current/license-key)
-  geoip_license_key: 
+  geoip_license_key:
     name: geoip license key
     description: MaxMind GeoIp database license key (https://www.maxmind.com/en/accounts/current/license-key)
   zmq_loc_port:
@@ -48,4 +47,3 @@ configuration:
   redis_loc_port:
     name: Redis localhost port
     description: Internal localhost only port for communication from ntopng to Redis
-  
