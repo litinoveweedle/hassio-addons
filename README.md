@@ -2,9 +2,15 @@
 
 The stuff I think I need or just want and  can't find somewhere else. ;-)
 
-Add-on documentation: <https://developers.home-assistant.io/docs/add-ons>
-
 [![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Flitinoveweedle%2Fhassio-addons)
+
+## Add-on documentation
+
+Each addons comes with own DOCS.md documenting functions and configuration. Find it either browsing this repo source or after addon installation in the Home Assistant addon page in the tab Documentation.
+
+## Issues
+
+To report issues please use [Github Issues in the development repo](https://github.com/litinoveweedle/hassio-addons-dev/issues).
 
 ## Add-ons
 
