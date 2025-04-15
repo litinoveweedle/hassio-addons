@@ -1,4 +1,7 @@
 configuration:
+  log_level:
+   name: log level
+   description: The amount of logging the add-on should do. [trace|debug|info|notice|warning|error|fatal]
   mqtt_server:
     name: MQTT server IP
     description: IP address or FQDN of the MQTT broker. If you are running Mosquitto addon it will be IP address of your HomeAssistant.

@@ -7,29 +7,53 @@ This addon is based on the [taptap](https://github.com/litinoveweedle/taptap) pr
 
   - MQTT broker like for example [Mosquitto addon](https://www.home-assistant.io/integrations/mqtt/#setting-up-a-broker)
   - Home Assistant [MQTT integration](https://www.home-assistant.io/integrations/mqtt/)
-  - Modbus RS485 to Ethernet convertor like for example [WaveShare models](https://www.waveshare.com/product/iot-communication/wired-comm-converter/ethernet-to-uart-rs232-rs485.htm)
+  - Modbus RS485 to Serial/Ethernet converter like for example [WaveShare models](https://www.waveshare.com/product/iot-communication/wired-comm-converter/ethernet-to-uart-rs232-rs485.htm)
 
 
-## Modbus to Ethernet connection to Tigo CCA
+## Modbus to Ethernet/Serial connection to Tigo CCA
 
-Modbus to Ethernet convertor has to inter connected to [Tigo CCA gateway](https://cs.tigoenergy.com/product/cloud-connect-advanced):
-  1. connect convertor to connector named Gateway on Tigo CCA gateway
-  2. there will be already wires in this connector from the connected Tigo Tap on your roof
-  3. connect convertor together (in parallel) with existing wires from Tigo Tap
-  4. use 3 wires - A, B and Ground: connect A to A, B to B, Ground to Ground
-  5. wires shall be as short as possible - mount your convertor close to the Tigo CCA gateway
+### Modbus to Ethernet/Serial converter has to be connected to the [Tigo CCA gateway](https://cs.tigoenergy.com/product/cloud-connect-advanced):
+  1. connect converter to connector named Gateway on Tigo CCA gateway
+  2. there will be already wires in this connector from the connected Tigo TAP on your roof
+  3. connect converter wires together (in parallel) with existing wires from Tigo TAP
+  4. use 3 wires - `A`, `B` and `-`/`⏚`: connect `A` to `A`, `B` to `B`, `-`/`⏚` to `-`/`⏚`
+  5. wires shall be as short as possible - mount your converter close to the Tigo CCA gateway
 
-Setup Modbus to Ethernet convertor:
-  1. connect convertor to your LAN network so it will be reachable from Home Assistant
-  2. assign IP address to the convertor (automatically using DHCP or manually static one)
-  3. set Modbus communication to 38400b, databits 8, stopbits 1, Flow control None
-  4. set convertor mode to Modbus TCP Server    
-  5. remember IP address and TCP port of converter to set in the addon configuration later
+```text
+  ┌─────────────────────────────────────┐      ┌────────────────────────────┐
+  │              Tigo CCA               │      │         Tigo TAP           │
+  │                                     │      │                            │
+  │ AUX  RS485-1  GATEWAY  RS485-2 POWER│      │                    ┌~┐     │
+  │┌─┬─┐ ┌─┬─┬─┐ ┌─┬─┬─┬─┐ ┌─┬─┬─┐ ┌─┬─┐│      │   ┌─┬─┬─┬─┐   ┌─┬─┬│┬│┐    │
+  ││/│_│ │-│B│A│ │-│+│B│A│ │-│B│A│ │-│+││      │   │-│+│B│A│   │-│+│B│A│    │
+  │└─┴─┘ └─┴─┴─┘ └┃┴│┴┃┴┃┘ └─┴─┴─┘ └─┴─┘│      │   └│┴│┴│┴│┘   └─┴─┴─┴─┘    │
+  └───────────────┃─│─┃─┃───────────────┘      └────│─│─│─│─────────────────┘
+                  ┃ │ ┃ ┃                           │ │ │ │
+                  ┃ │ ┃ ┃───────────────────────────│─│─│─┘
+                  ┃ │ ┃─┃───────────────────────────│─│─┘
+                  ┃ └─┃─┃───────────────────────────│─┘
+                  ┃───┃─┃───────────────────────────┘
+                  ┗━┓ ┃ ┃
+                ┌───┃─┃─┃───┐
+                │  ┌┃┬┃┬┃┐  │
+                │  │-│B│A│  │
+                │  └─┴─┴─┘  │
+                │ Converter │
+                └───────────┘
+```
+### Modbus to Ethernet converter needs some additional configuration:
+  1. connect converter to your LAN network so it will be reachable from Home Assistant
+  2. assign IP address to the converter (automatically using DHCP or manually static one)
+  3. set Modbus communication to 38400b, data bits 8, stop bits 1, Flow control None
+  4. set converter work mode to Modbus TCP Server
+  5. set protocol to Modbus TCP (not Modbus TCP to RTU), for Waveshare converter this is on the web configuration page under the 'Multi-Host Settings' as 'Protocol' set to 'None'
+  6. remember IP address and TCP port of converter to set in the addon configuration later
 
+Every Modbus to Ethernet converter has different setting, you you do not see any data collected from your installation there is VERY high chance, that you have some problem in the converter connection or configuration! Please refer to the [note here](#warning)!
 
 ## Addon Installation
 
-Install taptap addon in your Home Assistant
+Install TapTap addon in your Home Assistant
 
 1. Click the Home Assistant My button below to open the add-on on your Home
    Assistant instance.
@@ -43,9 +67,10 @@ Install taptap addon in your Home Assistant
 
 ## Configuration
 
-taptap add-on example configuration:
+TapTap add-on example configuration:
 
 ```yaml
+log_level: warning
 mqtt_server: 192.168.1.2
 mqtt_port: 1883
 mqtt_qos: 1
@@ -65,6 +90,24 @@ ha_birth_topic: homeassistant/status
 taptap_address: 192.168.1.50
 
 ```
+
+### Option: `log_level`
+
+The `log_level` option controls the level of log output by the add-on and can
+be changed to be more or less verbose, which might be useful when you are
+dealing with an unknown issue. Possible values are:
+
+- `trace`: Show every detail, like all called internal functions.
+- `debug`: Shows detailed debug information.
+- `info`: Normal (usually) interesting events.
+- `warning`: Exceptional occurrences that are not errors.
+- `error`: Runtime errors that do not require immediate action.
+- `fatal`: Something went terribly wrong. Add-on becomes unusable.
+
+Please note that each level automatically includes log messages from a
+more severe level, e.g., `debug` also shows `info` messages. By default,
+the `log_level` is set to `info`, which is the recommended setting unless
+you are troubleshooting.
 
 ### Option: `mqtt_server`
 
@@ -92,21 +135,21 @@ MQTT broker password to connect to server.
 
 ### Option: `taptap_serial`
 
-If you use Modbus to USB/Serial convertor connected to Home assistant server this will be it device file (probably /dev/ttyUSB0 or /dev/ttyACM0). If you use Modbus to Ethernet convertor this must not be filled!
+If you use Modbus to USB/Serial converter connected to Home assistant server this will be it device file (probably /dev/ttyUSB0 or /dev/ttyACM0). If you use Modbus to Ethernet converter this must not be filled!
 
 ### Option: `taptap_address`
 
-If you use Modbus to Ethernet convertor connected to Home assistant server this will be its IP address. If you use Modbus to Serial/USB convertor this must not be filled!
+If you use Modbus to Ethernet converter connected to Home assistant server this will be its IP address. If you use Modbus to Serial/USB converter this must not be filled!
 
 ### Option: `taptap_port`
 
-If you use Modbus to Ethernet convertor connected to Home assistant server this will be its TCP port, default is `502`.
+If you use Modbus to Ethernet converter connected to Home assistant server this will be its TCP port, default is `502`.
 
 ### Option: `taptap_module_ids`
 
 Comma separated list of Tigo modules ids as those communicate on the Modbus. This ID are numbers typically starting from 2 and each next module has +1. If you replace one Tigo module by another new module will get new ID. Addon will log if there will be any messages received from unknown ID (not listed here).
 
-### Option: `taptap_moudule_names`
+### Option: `taptap_module_names`
 
 Comma separated list of the Tigo modules names you would like to see in Home Assistant in corresponding entities names. Enter in the same order as Ids.
 
@@ -152,13 +195,21 @@ based on the following:
 
 ## Support
 
-Got questions?
+### Got questions?
 
 You have several options to get them answered:
 
 - The Home Assistant [Community Forum][forum].
 - You could also [open an issue here][issue] GitHub.
 
+### WARNING:
+If you in the `debug` log level mode do not see any received messages (like the one bellow) **DO NOT open issue** - the problem is 100% at you side. If you do open issue anyway it will be immediately closed as invalid! You can ask for help community at the forum link bellow instead.
+
+```
+DEBUG: Received taptap data
+DEBUG: b'{"gateway":{"id":4609},"node":{"id":14},"timestamp":"2025-04-14T15:26:06.494986044+02:00","voltage_in":39.15,"voltage_out":38.8,"current":3.38,"dc_dc_duty_cycle":1.0,"temperature":42.0,"rssi":195}\n'
+
+```
 
 ## Authors & contributors
 
@@ -169,10 +220,10 @@ The original setup of this repository is by [Li Tin O`ve Weedle][litin].
 
 Apache 2.0
 
-Copyright (c) 2023 Dominik Strnad
+Copyright (c) 2025 Dominik Strnad
 
 [addon-badge]: https://my.home-assistant.io/badges/supervisor_addon.svg
-[addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=a0d7b954_example&repository_url=https%3A%2F%2Fgithub.com%2Flitinoveweedle%2Fhassio-addons
+[addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=taptap&repository_url=https%3A%2F%2Fgithub.com%2Flitinoveweedle%2Fhassio-addons
 [contributors]: https://github.com/litinoveweedle/hassio-addons/graphs/contributors
 [forum]: https://community.home-assistant.io/t/tigo-optimizer-local-monitoring-without-cloud-now-possible/869754
 [litin]: https://github.com/litinoveweedle
