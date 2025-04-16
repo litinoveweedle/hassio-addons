@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.1.3
+
+- updated taptap-mqtt to v0.0.6 - fix for average statistic sensors calculation
+
 ## 0.1.2
 
 - updated taptap-mqtt to v0.0.5 - provides configurable logging
