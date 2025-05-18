@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.1.4
+
+- updated taptap-mqtt to v0.0.7 - support for different timestamp format, stability fixes to hopefully prevent silent freezes
+
 ## 0.1.3
 
 - updated taptap-mqtt to v0.0.6 - fix for average statistic sensors calculation
