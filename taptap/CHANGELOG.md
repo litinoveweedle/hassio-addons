@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.1.5
+
+- updated taptap-mqtt to v0.0.8 - republish LWT state online after paho internal reconnect
+
 ## 0.1.4
 
 - updated taptap-mqtt to v0.0.7 - support for different timestamp format, stability fixes to hopefully prevent silent freezes
