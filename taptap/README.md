@@ -1,6 +1,6 @@
 # Home Assistant Add-on: taptap - Tigo CCA to MQTT
 
-Tigo CCA Tap to MQTT implementation to get data from Tigo optimizers locally to Home Assistant. See [docs](DOCS.md) for required HW installation and usage.
+Tigo CCA Tap to MQTT implementation to get data from Tigo optimizers locally to Home Assistant. See [docs](https://github.com/litinoveweedle/hassio-addons/blob/main/taptap/DOCS.md) for required HW installation and usage.
 
 ![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
