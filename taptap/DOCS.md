@@ -139,7 +139,7 @@ If you have Modbus to USB/Serial converter connected to Home Assistant server, t
 
 ### Option: `taptap_address`
 
-If you use  aModbus to Ethernet converter connected to Home Assistant server this will be its IP address. If you use Modbus to Serial/USB converter this must not be filled in!
+If you use a Modbus to Ethernet converter connected to Home Assistant server this will be its IP address. If you use Modbus to Serial/USB converter this must not be filled in!
 
 ### Option: `taptap_port`
 
