@@ -1,6 +1,6 @@
 # Li Tin O`ve Weedle Assistant Add-on: TapTap - Tigo CCA to MQTT
 
-This addon is based on the [taptap](https://github.com/litinoveweedle/taptap) project which reverse engineered protocol between Tigo TAP and CCA components. I was able to create [mqtt bridge](https://github.com/litinoveweedle/taptap-mqtt) and package it as a Home Assistant addon TapTap. Addon allows to get detailed information from the Tigo photovoltaic optimizer modules completely locally - without Tigo cloud and with refresh time of 10s. Addon uses Home Assistant MQTT auto discovery feature so it will setup all provided sensors automatically in the HA. :wink:
+This addon is based on the [taptap](https://github.com/litinoveweedle/taptap) project, which reverse engineered protocol between Tigo TAP and CCA components. I was able to create a [MQTT bridge](https://github.com/litinoveweedle/taptap-mqtt) and package it as a Home Assistant addon called TapTap. The addon allows you to get detailed information from the Tigo photovoltaic optimizer modules completely locally - without Tigo cloud and with a refresh time of 10s. The addon uses Home Assistant MQTT auto discovery feature so it will setup all provided sensors automatically in the HA. :wink:
 
 
 ## Installation prerequisites
@@ -49,7 +49,7 @@ This addon is based on the [taptap](https://github.com/litinoveweedle/taptap) pr
   5. set protocol to Modbus TCP (not Modbus TCP to RTU), for Waveshare converter this is on the web configuration page under the 'Multi-Host Settings' as 'Protocol' set to 'None'
   6. remember IP address and TCP port of converter to set in the addon configuration later
 
-Every Modbus to Ethernet converter has different setting, you you do not see any data collected from your installation there is VERY high chance, that you have some problem in the converter connection or configuration! Please refer to the [note here](#warning)!
+Every Modbus to Ethernet converter has different setting, if you do not see any data collected from your installation there is VERY high chance, that you have some problem in the converter connection or configuration! Please refer to the [note here](#warning)!
 
 ## Addon Installation
 
@@ -135,11 +135,11 @@ MQTT broker password to connect to server.
 
 ### Option: `taptap_serial`
 
-If you use Modbus to USB/Serial converter connected to Home assistant server this will be it device file (probably /dev/ttyUSB0 or /dev/ttyACM0). If you use Modbus to Ethernet converter this must not be filled!
+If you have Modbus to USB/Serial converter connected to Home Assistant server, this will be it device file (probably `/dev/ttyUSB0` or `/dev/ttyACM0`). If you use a Modbus to Ethernet converter, this must not be filled in!
 
 ### Option: `taptap_address`
 
-If you use Modbus to Ethernet converter connected to Home assistant server this will be its IP address. If you use Modbus to Serial/USB converter this must not be filled!
+If you use  aModbus to Ethernet converter connected to Home Assistant server this will be its IP address. If you use Modbus to Serial/USB converter this must not be filled in!
 
 ### Option: `taptap_port`
 
@@ -147,11 +147,11 @@ If you use Modbus to Ethernet converter connected to Home assistant server this 
 
 ### Option: `taptap_module_ids`
 
-Comma separated list of Tigo modules ids as those communicate on the Modbus. This ID are numbers typically starting from 2 and each next module has +1. If you replace one Tigo module by another new module will get new ID. Addon will log if there will be any messages received from unknown ID (not listed here).
+Comma separated list of Tigo modules IDs as those communicate on the Modbus. These IDs are numbers typically starting from 2 and each next module has +1. If you replace one Tigo module by another new module will get new ID. The addon will log if there will be any messages received from unknown ID (not listed here).
 
 ### Option: `taptap_module_names`
 
-Comma separated list of the Tigo modules names you would like to see in Home Assistant in corresponding entities names. Enter in the same order as Ids.
+Comma separated list of the Tigo modules names you would like to see in Home Assistant in corresponding entities names. Enter in the same order as IDs.
 
 ### Option: `taptap_topic_prefix`
 
@@ -159,7 +159,7 @@ MQTT topic prefix used on the MQTT to post messages so Home Assistant can read t
 
 ### Option: `taptap_topic_name`
 
-MQTT topic name used on the MQTT to post messages so Home Assistant can read those, default is `tigo`. This name will be also used in name of the Home Assistant taptap device and entities.
+MQTT topic name used on the MQTT to post messages so Home Assistant can read those, default is `tigo`. This name will be also used in name of the Home Assistant TapTap device and entities.
 
 ### Option: `taptap_update`
 
@@ -200,7 +200,7 @@ based on the following:
 You have several options to get them answered:
 
 - The Home Assistant [Community Forum][forum].
-- You could also [open an issue here][issue] GitHub.
+- You could also [open a GitHub issue][issue].
 
 ### WARNING:
 If you in the `debug` log level mode do not see any received messages (like the one bellow) **DO NOT open issue** - the problem is 100% at you side. If you do open issue anyway it will be immediately closed as invalid! You can ask for help community at the forum link bellow instead.
