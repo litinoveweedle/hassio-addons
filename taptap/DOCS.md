@@ -60,9 +60,11 @@ Install TapTap addon in your Home Assistant
 
    [![Open this add-on in your Home Assistant instance.][addon-badge]][addon]
 
-2. Click the "Install" button to install the add-on.
-3. Start the "Example" add-on.
-4. Check the logs of the "Example" add-on to see it in action.
+2. Click the "Install" button to install the "taptap" add-on.
+3. Configure "taptap" add-on on the "Configuration" tab, see configuration examples in the "Documentation" tab.
+4. Start "taptap" addon, check that it is running in the "Log" tab.
+5. Check the new created HA MQTT sensors of the "taptap" add-on to see it in action.
+6. For Tigo nodes serials detection please wait one day (i.e 24hrs)
 
 
 ## Configuration
@@ -78,12 +80,15 @@ mqtt_timeout: 5
 mqtt_user: mqttuser
 mqtt_pass: mqttpass
 taptap_port: 502
-taptap_module_ids: 2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18
-taptap_module_names: A01,A02,A03,A04,A05,A06,A07,A08,A09,A10,A11,A12,A13,A14,A15,A16
-taptap_topic_prefix: taptap
+taptap_modules_serials:
+  - A01:X-AAAAAA
+  - A02:X-AAAAAAB
+  - A03:X-AAAAAAC
+  - .....
 taptap_topic_name: tigo
+taptap_topic_prefix: taptap
 taptap_update: 10
-taptap_timeout: 60
+taptap_timeout: 180
 ha_entity_availability: true
 ha_discovery_prefix: homeassistant
 ha_birth_topic: homeassistant/status
@@ -145,21 +150,17 @@ If you use a Modbus to Ethernet converter connected to Home Assistant server thi
 
 If you use Modbus to Ethernet converter connected to Home assistant server this will be its TCP port, default is `502`.
 
-### Option: `taptap_module_ids`
+### Option: `taptap_modules_serials`
 
-Comma separated list of Tigo modules IDs as those communicate on the Modbus. These IDs are numbers typically starting from 2 and each next module has +1. If you replace one Tigo module by another new module will get new ID. The addon will log if there will be any messages received from unknown ID (not listed here).
-
-### Option: `taptap_module_names`
-
-Comma separated list of the Tigo modules names you would like to see in Home Assistant in corresponding entities names. Enter in the same order as IDs.
-
-### Option: `taptap_topic_prefix`
-
-MQTT topic prefix used on the MQTT to post messages so Home Assistant can read those, default is `taptap`. There is typically no need to change this setting.
+Tuple of modules friendly names as defined by user and modules serial numbers in the format `NAME1:SERIAL1, NAME2:SERIAL2,...` Tigo modules serial numbers can be found on the modules barcode stickers or in the Tigo cloud. Serials have `X-XXXXXX` format. Program will log any unknown serial number so you can use it to discover serials if you do not know them. Be aware that messages with serial numbers are emitted rarely, very often only during night time! Wait as lest 24hrs for the complete discovery! To allow for monitoring to start as soon as possible (before receiving all serials), addon will temporarily assign Tigo modules to the user names randomly at the first run. Once serials are received, addon will enumerate all sensors to match user defined names. Once detected serial numbers and mapping to user names are stored in the addon persistent storage in HA and stored information will be reused for any future addon runs.
 
 ### Option: `taptap_topic_name`
 
-MQTT topic name used on the MQTT to post messages so Home Assistant can read those, default is `tigo`. This name will be also used in name of the Home Assistant TapTap device and entities.
+Name to be used as device name in the Home Assistant, default is `tigo`. This will be also used as MQTT topic (together with topic prefix) to post messages on MQTT to Home Assistant.
+
+### Option: `taptap_topic_prefix`
+
+MQTT topic prefix used on the MQTT to post messages so Home Assistant can read those, default is `taptap`. There is typically there is no need to change this setting.
 
 ### Option: `taptap_update`
 
@@ -167,11 +168,11 @@ How often Home Assistant entities are updated in seconds, default is `10`.
 
 ### Option: `taptap_timeout`
 
-If no message is received within last given number of seconds from the node and 'Entities unavailable if node is offline' is set to true, then corresponding entities are set to Unavailable state.
+If no message is received within last X seconds from the node and `Entities unavailable if node is offline` is set to true then corresponding entities are set to `Unavailable` state. If your entities have flapping 'Unavailable' status during the day increase this number. Default is `120` seconds.
 
 ### Option: `ha_entity_availability`
 
-If set to true, then if no message from any given module is received in the time specified by 'Availability timeout' corresponding entities are set to Unavailable state.
+If set to true, then if no message from any given module is received in the time specified by `Availability timeout` corresponding entities are set to `Unavailable` state.
 
 ### Option: `ha_discovery_prefix`
 

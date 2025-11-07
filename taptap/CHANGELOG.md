@@ -1,5 +1,17 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.2.1
+
+- BREAKING CHANGE - Tigo modules serials are now used for the configuration
+- updated taptap to v0.2.5 - fix for new Tigo CCA fw 4.0.1 protocol changes
+- updated taptap-mqtt to v0.1.1 - fixed initialization logic
+
+## 0.2.0
+
+- BREAKING CHANGE - Tigo modules serials are now used for the configuration
+- updated taptap to v0.2.0 - implemented support for modules serial number detection
+- updated taptap-mqtt to v0.1.0 - support modules configuration by serial numbers
+
 ## 0.1.7
 
 - updated taptap to v0.1.2 - implemented reconnect logic
