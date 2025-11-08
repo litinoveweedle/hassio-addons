@@ -1,5 +1,10 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.2.2
+
+- BREAKING CHANGE - Tigo modules serials are now used for the configuration
+- updated taptap-mqtt to v0.1.2 - fixed state topic initialization
+
 ## 0.2.1
 
 - BREAKING CHANGE - Tigo modules serials are now used for the configuration
