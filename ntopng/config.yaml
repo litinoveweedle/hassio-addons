@@ -1,10 +1,10 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: ntopng
-version: "0.3.0"
+version: 0.3.0
 slug: ntopng
 description: The SoHo FOSS & FREE ntopng with netflow collector
 url: "https://github.com/litinoveweedle/hassio-addons/tree/main/ntopng"
-image: "ghcr.io/litinoveweedle/hassio-addon-ntopng-{arch}"
+image: "ghcr.io/litinoveweedle/hassio-addon-ntopng"
 ingress: true
 ingress_port: 0
 ingress_stream: true
