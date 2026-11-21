@@ -1,3 +1,10 @@
+# This repository deprecated and all addons are not anymore maintained
+
+Open Home Foundation in 'bright' decision killed HomeAssistant Supervised. I used it for long time even after that as gone as it was the sweet spot for me. Unfortunately OHF enshitification of HA towards user not running HassIO continued into the stage, where I had two options. Install HassIO on VM or start running HA in Docker. As I consider HassIO to be inferior to my OS from any point of view (i.e. maintainability, flexibility, security...) I finally decided to switch my HA to Docker. Therefore I have no motivation and needs to keep this HassIO addons repo going.
+
+'So long, and thanks for all the fish'
+
+
 # Li Tin O've Weedle custom Home Assistant add-on repository
 
 The stuff I think I need or just want and  can't find somewhere else. ;-)
