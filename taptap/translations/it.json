@@ -1,0 +1,79 @@
+configuration:
+  log_level:
+    name: Livello di log
+    description: La quantità di log che l'add-on deve generare. [trace|debug|info|notice|warning|error|fatal]
+  mqtt_server:
+    name: IP del server MQTT
+    description: Indirizzo IP o FQDN del broker MQTT. Se stai eseguendo l'add-on Mosquitto, corrisponderà all'indirizzo IP del tuo HomeAssistant.
+  mqtt_port:
+    name: Porta MQTT
+    description: Porta TCP del broker MQTT, il valore predefinito è '1883'.
+  mqtt_qos:
+    name: QoS MQTT
+    description: Configurazione QoS MQTT - fare riferimento alla documentazione MQTT di Home Assistant, il valore predefinito è 1.
+  mqtt_timeout:
+    name: Timeout MQTT
+    description: Timeout di connessione MQTT - fare riferimento alla documentazione MQTT di Home Assistant, il valore predefinito è 5.
+  mqtt_user:
+    name: Nome utente MQTT
+    description: Nome utente MQTT per connettersi al server.
+  mqtt_pass:
+    name: Password MQTT
+    description: Password MQTT per connettersi al server.
+  taptap_serial:
+    name: File del dispositivo da Modbus a seriale
+    description: Se utilizzi un convertitore da Modbus a USB/Seriale connesso al server Home Assistant, questo sarà il suo file di dispositivo (probabilmente /dev/ttyUSB0 o /dev/ttyACM0). Se utilizzi un convertitore da Modbus a Ethernet, questo campo non deve essere compilato!
+  taptap_address:
+    name: IP del convertitore da Modbus a Ethernet
+    description: Se utilizzi un convertitore da Modbus a Ethernet connesso al server Home Assistant, questo sarà il suo indirizzo IP. Se utilizzi un convertitore da Modbus a Seriale/USB, questo campo non deve essere compilato!
+  taptap_port:
+    name: Porta del convertitore da Modbus a Ethernet
+    description: Se utilizzi un convertitore da Modbus a Ethernet connesso al server Home Assistant, questa sarà la sua porta TCP, il valore predefinito è '502'.
+  taptap_modules:
+    name: Nomi delle stringhe dei moduli Tigo, nomi dei moduli e numeri di serie
+    description: Nome della stringa dei moduli Tigo, nomi dei moduli e numero di serie nel formato [STRINGA]:NOME:[SERIALE]. Si prega di consultare la Documentazione per una spiegazione dettagliata.
+  taptap_topic_name:
+    name: Topic MQTT e nome del dispositivo
+    description: Nome da utilizzare come nome del dispositivo in Home Assistant, il valore predefinito è 'tigo'. Questo verrà utilizzato anche come topic MQTT (insieme al prefisso del topic) per pubblicare messaggi su MQTT verso Home Assistant.
+  taptap_topic_prefix:
+    name: Prefisso del topic MQTT per taptap
+    description: Prefisso del topic MQTT utilizzato su MQTT per pubblicare messaggi in modo che Home Assistant possa leggerli, il valore predefinito è 'taptap'. In genere non è necessario modificare questa impostazione.
+  taptap_update:
+    name: Tempo di aggiornamento MQTT
+    description: Frequenza con cui le entità di Home Assistant vengono aggiornate in secondi, il valore predefinito è '10'.
+  taptap_timeout:
+    name: Timeout di disponibilità
+    description: Se non viene ricevuto alcun messaggio dal nodo entro gli ultimi X secondi e l'opzione 'Entità non disponibili se il nodo è offline' è impostata su true, le entità corrispondenti vengono impostate sullo stato 'Non disponibile'. Se le tue entità mostrano uno stato 'Non disponibile' altalenante durante il giorno, aumenta questo numero. Il valore predefinito è '180' secondi.
+  ha_nodes_availability_online:
+    name: Entità del nodo non disponibili se il nodo è offline
+    description: Per impostare le entità del nodo di Home Assistant come 'NON DISPONIBILI' se non viene ricevuto alcun messaggio entro il TIMEOUT, impostare su 'true' o 'false'. Il valore predefinito è 'true'.
+  ha_nodes_availability_identified:
+    name: Entità del nodo non disponibili se il seriale del nodo non è ancora noto
+    description: Imposta le entità del nodo di Home Assistant come 'NON DISPONIBILI' se il seriale del nodo non è ancora noto, impostare su 'true' o 'false'. Il valore predefinito è 'false'.
+  ha_strings_availability_online:
+    name: Entità statistiche della stringa non disponibili se tutti i nodi della stringa sono offline
+    description: Imposta le entità statistiche della stringa di Home Assistant come 'NON DISPONIBILI' se non ci sono nodi online, impostare su 'true' o 'false'.
+  ha_strings_availability_identified:
+    name: Entità statistiche della stringa non disponibili se non tutti i seriali dei nodi della stringa sono ancora noti
+    description: Imposta le entità statistiche della stringa di Home Assistant come 'NON DISPONIBILI' se non tutti i seriali dei nodi sono ancora noti, impostare su 'true' o 'false'. Il valore predefinito è 'false'.
+  ha_stats_availability_online:
+    name: Entità statistiche totali non disponibili se tutti i nodi sono offline
+    description: Imposta le entità statistiche totali di Home Assistant come 'NON DISPONIBILI' se non c'è alcun nodo online, impostare su 'true' o 'false'.
+  ha_stats_availability_identified:
+    name: Entità statistiche totali non disponibili se non tutti i seriali dei nodi sono ancora noti
+    description: Imposta le entità statistiche totali di Home Assistant come 'NON DISPONIBILI' se non tutti i seriali dei nodi sono ancora noti, impostare su 'true' o 'false'. Il valore predefinito è 'false'.
+  ha_nodes_sensors_recorder:
+    name: Registratore di statistiche dei sensori del nodo
+    description: Elenco dei nomi di base delle entità dei sensori del nodo che devono avere il registratore di statistiche di Home Assistant abilitato. I valori disponibili sono 'voltage_in', 'voltage_out', 'current_in', 'current_out', 'power', 'temperature', 'duty_cycle', 'rssi', 'energy'.
+  ha_strings_sensors_recorder:
+    name: Registratore di statistiche dei sensori della stringa
+    description: Elenco dei nomi di base delle entità dei sensori statistici della stringa che devono avere il registratore di statistiche di Home Assistant abilitato. I valori disponibili sono 'voltage_in', 'voltage_out', 'current_in', 'current_out', 'power', 'temperature', 'duty_cycle', 'rssi', 'energy'.
+  ha_stats_sensors_recorder:
+    name: Registratore di statistiche dei sensori delle statistiche totali
+    description: Elenco dei nomi di base delle entità dei sensori statistici totali che devono avere il registratore di statistiche di Home Assistant abilitato. I valori disponibili sono 'voltage_in', 'voltage_out', 'current_in', 'current_out', 'power', 'temperature', 'duty_cycle', 'rssi', 'energy'.
+  ha_discovery_prefix:
+    name: Prefisso di discovery MQTT di Home Assistant
+    description: Prefisso MQTT a cui Home Assistant è iscritto per il rilevamento automatico (auto discovery) dei nuovi dispositivi ed entità. Fare riferimento alla documentazione HA MQTT, il valore predefinito è 'homeassistant'. In genere non è necessario modificare questa impostazione.
+  ha_birth_topic:
+    name: Topic MQTT LWT e birth di Home Assistant
+    description: Prefisso MQTT che Home Assistant annuncia quando va online. Fare riferimento alla documentazione HA MQTT, il valore predefinito è 'homeassistant/status'. In genere non è necessario modificare questa impostazione.
